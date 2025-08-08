@@ -17,7 +17,7 @@ require('dotenv').config();
 
 /** @type {express.Application} Inicializa la aplicación Express */
 const app = express();
-
+app.set('trust proxy', 1); 
 /** @type {number|string} Puerto del servidor, obtenido de variables de entorno o predeterminado a 3000 */
 const port = process.env.PORT || 3000;
 
@@ -46,7 +46,8 @@ app.use(session({
     cookie: {
         secure: process.env.NODE_ENV === 'production', // Solo HTTPS en producción
         httpOnly: true, // Evita acceso a la cookie desde JavaScript del cliente
-        maxAge: 24 * 60 * 60 * 1000 // Duración de la cookie: 1 día
+        maxAge: 24 * 60 * 60 * 1000, // Duración de la cookie: 1 día
+	sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'Strict'
     }
 }));
 

@@ -18,7 +18,7 @@ const doubleCsrfOptions = {
         httpOnly: true, // Evita acceso desde JavaScript del cliente
         path: '/', // Ruta de la cookie
         secure: process.env.NODE_ENV === 'production', // Solo HTTPS en producción
-        sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', // Política SameSite
+        sameSite: process.env.NODE_ENV === 'production' ? 'Strict' : 'None', // Política SameSite
     },
     size: 32, // Tamaño del token CSRF
     ignoredMethods: ['GET', 'HEAD', 'OPTIONS'], // Métodos HTTP ignorados
