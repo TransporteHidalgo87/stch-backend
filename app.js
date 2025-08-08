@@ -51,6 +51,8 @@ app.use(session({
     }
 }));
 
+
+
 /**
  * @route GET /api/csrf-token
  * @description Genera y devuelve un token CSRF para proteger formularios.
